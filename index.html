@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="eng">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Мини игры</title>
+		<link rel="stylesheet" href="styles.css" />
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				font-family: "Arial", sans-serif;
+				background: linear-gradient(to right, #74ebd5, #acb6e5);
+				margin: 0;
+			}
+			.game-container {
+				text-align: center;
+				background: rgba(255, 255, 255, 0.9);
+				padding: 30px;
+				border-radius: 15px;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+				transition: transform 0.2s;
+			}
+			.game-container:hover {
+				transform: scale(1.05);
+			}
+			h1 {
+				color: #333;
+			}
+			input {
+				padding: 10px;
+				margin-top: 10px;
+				width: 80px;
+				text-align: center;
+				border: 2px solid #74ebd5;
+				border-radius: 5px;
+				font-size: 16px;
+				outline: none;
+				transition: border 0.3s;
+			}
+			input:focus {
+				border-color: #acb6e5;
+			}
+			button {
+				padding: 10px 15px;
+				margin-top: 10px;
+				background-color: #6200ea;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s, transform 0.2s;
+			}
+			button:hover {
+				background-color: #3700b3;
+				transform: scale(1.05);
+			}
+			.message {
+				margin-top: 20px;
+				font-size: 18px;
+				color: #333;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="game-container">
+			<h1>Выбери игру</h1>
+			<div class="gamesList">
+				<div class="gameCard">
+					<h3 class="gameTitle">game 1</h3>
+					<a href="game1.html" class="gameBtn">play!</a>
+				</div>
+				<div class="gameCard">
+					<h3 class="gameTitle">game2</h3>
+					<a href="game2.html" class="gameBtn">play!</a>
+				</div>
+				<div class="gameCard">
+					<h3 class="gameTitle">game3</h3>
+					<a href="game3.html" class="gameBtn">play!</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="eng">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Угадай число от 1 до 100</title>
+		<link rel="stylesheet" href="styles.css" />
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+				font-family: "Arial", sans-serif;
+				background: linear-gradient(to right, #74ebd5, #acb6e5);
+				margin: 0;
+			}
+			.game-container {
+				text-align: center;
+				background: rgba(255, 255, 255, 0.9);
+				padding: 30px;
+				border-radius: 15px;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+				transition: transform 0.2s;
+			}
+			.game-container:hover {
+				transform: scale(1.05);
+			}
+			h1 {
+				color: #333;
+			}
+			input {
+				padding: 10px;
+				margin-top: 10px;
+				width: 80px;
+				text-align: center;
+				border: 2px solid #74ebd5;
+				border-radius: 5px;
+				font-size: 16px;
+				outline: none;
+				transition: border 0.3s;
+			}
+			input:focus {
+				border-color: #acb6e5;
+			}
+			button {
+				padding: 10px 15px;
+				margin-top: 10px;
+				background-color: #6200ea;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.3s, transform 0.2s;
+			}
+			button:hover {
+				background-color: #3700b3;
+				transform: scale(1.05);
+			}
+			.message {
+				margin-top: 20px;
+				font-size: 18px;
+				color: #333;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="game-container">
+			<h1>Угадай число от 1 до 100</h1>
+			<input
+				type="number"
+				id="guess"
+				min="1"
+				max="100"
+				placeholder="Введите число"
+			/>
+			<button id="check-button" onclick="checkGuess()">
+				<i class="fas fa-check"></i> Проверить
+			</button>
+			<button
+				id="restart-button"
+				onclick="restartGame()"
+				style="display: none"
+			>
+				<i class="fas fa-sync-alt"></i> Начать заново
+			</button>
+			<div class="message" id="message"></div>
+		</div>
+
+		<script>
+			let randomNumber, attempts;
+			let message = document.getElementById("message");
+			let guess = document.getElementById("guess");
+			let cButton = document.getElementById("check-button");
+			let rButton = document.getElementById("restart-button");
+			// console.log(message, guess, cButton, rButton);
+
+			function startGame() {
+				randomNumber = Math.floor(Math.random() * 100) + 1;
+				attempts = 0;
+				message.innerText = "";
+				guess.value = "";
+				cButton.style.display = "inline-block";
+				rButton.style.display = "none";
+			}
+
+			function checkGuess() {
+				const userGuess = Number(guess.value);
+				attempts++;
+
+				if (userGuess < 1 || userGuess > 100) {
+					message.innerText =
+						"Пожалуйста, введите число от 1 до 100.";
+				} else if (userGuess === randomNumber) {
+					message.innerText = `Поздравляю! Вы угадали число ${randomNumber} за ${attempts} попыток.`;
+					cButton.style.display = "none";
+					rButton.style.display = "inline-block";
+				} else if (userGuess < randomNumber) {
+					message.innerText = "Слишком низко! Попробуйте еще раз.";
+				} else {
+					message.innerText = "Слишком высоко! Попробуйте еще раз.";
+				}
+				guess.value = "";
+			}
+
+			function restartGame() {
+				startGame();
+			}
+
+			// Начать игру при загрузке страницы
+			window.onload = startGame;
+		</script>
+	</body>
+</html>
